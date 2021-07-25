@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post">
+{% csrf_token %}
+<div class="form-floating mb-3">
+  <input class="form-control" id="floatingInput" placeholder={{ form.first_name }}
+  <label for="floatingInput">First Name</label>
+</div>
+<div class="form-floating mb-3">
+  <input class="form-control" id="floatingInput" placeholder={{ form.last_name }}
+  <label for="floatingInput">Last Name</label>
+</div>
+<div class="form-floating mb-3">
+  <input class="form-control" id="floatingInput" placeholder={{ form.email }}
+  <label for="floatingInput">Email address</label>
+</div>
+<div class="form-floating mb-3">
+  <input class="form-control" id="floatingInput" placeholder={{ form.contact }}
+  <label for="floatingInput">Contact</label>
+</div>
+<div class="form-floating mb-3">
+  <input class="form-control" id="floatingInput" placeholder={{ form.body }}
+  <label for="floatingInput">Body</label>
+</div>
+<button type="submit" class="form-floating mb-3">Submit</button>
+</form>
+{% endblock content %}  
