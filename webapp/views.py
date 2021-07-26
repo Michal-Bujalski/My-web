@@ -2,15 +2,18 @@ from django.shortcuts import render
 from .models import Contact
 from .froms import ContactForm, ContactModelForm
 
-
-
 def home(request):
-    
-    return render(request, 'home.html')
+    forms = Contact.objects.all()
+    print(forms)
+    context = {
+        "forms": forms
+    }
+    return render(request, "home.html", context)
 
 
 def contact(request):
     form = ContactModelForm()
+    print(form)
     if request.method == "POST":
         form = ContactModelForm(request.POST)
         if form.is_valid():

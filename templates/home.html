@@ -3,4 +3,9 @@
 <div class="mb-3">
 Chce zobaczyc jak bedzie wygladal text
 </div>
+<ul>
+    {% for form in forms %}
+    <li>{{form}}</li>
+    {% endfor %}
+</ul>
 {% endblock content %}
