@@ -13,14 +13,12 @@ def home(request):
 
 def contact(request):
     form = ContactModelForm()
-    print(form)
     if request.method == "POST":
         form = ContactModelForm(request.POST)
         if form.is_valid():
-            print("The form is valid")
-            print(form.cleaned_data)
             first_name = form.cleaned_data["first_name"]
             last_name = form.cleaned_data["last_name"]
+            # Need update views with reasen model and fix contact field
             email = form.cleaned_data["email"]
             contact = form.cleaned_data["contact"]
             body = form.cleaned_data["body"]
