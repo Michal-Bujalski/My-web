@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Contact
-from .froms import ContactForm, ContactModelForm
+from .froms import ContactModelForm
 
 def home(request):
     forms = Contact.objects.all()
@@ -16,23 +16,24 @@ def contact(request):
     if request.method == "POST":
         form = ContactModelForm(request.POST)
         if form.is_valid():
+            # print(form.cleaned_data)
             first_name = form.cleaned_data["first_name"]
             last_name = form.cleaned_data["last_name"]
-            # Need update views with reasen model and fix contact field
             email = form.cleaned_data["email"]
-            contact = form.cleaned_data["contact"]
+            reason = form.cleaned_data["reason"]
             body = form.cleaned_data["body"]
             Contact.objects.create(
                 first_name=first_name,
                 last_name=last_name,
                 email=email,
-                contact=contact,
+                reason=reason,
                 body=body,
             )
             print("Contact user created")
     context = {
         "form": form
     }
+    # print(context)
     return render(request, 'contact.html', context)
 
 # def contact(request):

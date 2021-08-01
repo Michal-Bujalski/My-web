@@ -5,7 +5,7 @@ class ContactForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
-    contact = forms.CharField()
+    reason = forms.CharField()
     body = forms.CharField()
 
 class ContactModelForm(forms.ModelForm):
@@ -15,14 +15,14 @@ class ContactModelForm(forms.ModelForm):
             "first_name",
             "last_name",
             "email",
-            "contact",
+            "reason",
             "body",
     
         )
-        widget = {
-            "first_name": forms.TextInput(attrs={'class': "form-control"}),
-            "last_name": forms.TextInput(attrs={'class': "form-control"}),
-            "email": forms.TextInput(attrs={'class': "form-control"}),
-            "contact": forms.TextInput(attrs={'class': "form-control"}),
-            "body": forms.Textarea(attrs={'class': "form-control"}),  
+        widgets = {
+            "first_name": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'first_name'}),
+            "last_name": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'last_name'}),
+            "email": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'email'}),
+            "reason": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'reason'}),
+            "body": forms.Textarea(attrs={'class': "form-control", 'placeholder': 'body', 'style': "height: 400px"}),  
         }

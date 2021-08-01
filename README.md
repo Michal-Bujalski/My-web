@@ -9,3 +9,6 @@ z szczegolami i uzywam formy do wylasnie email i kontaku.
 
 skoncz z modelem dodales reason i zminiles contact do dokonczenia Model Forms i views do naprawy 
 Contact details do dokonczenia 
+
+
+
