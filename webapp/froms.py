@@ -1,12 +1,12 @@
 from django import forms
 from .models import Contact
 
-class ContactForm(forms.Form):
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    email = forms.EmailField()
-    reason = forms.CharField()
-    body = forms.CharField()
+# class ContactForm(forms.Form):
+#     first_name = forms.CharField()
+#     last_name = forms.CharField()
+#     email = forms.EmailField()
+#     reason = forms.CharField()
+#     body = forms.CharField()
 
 class ContactModelForm(forms.ModelForm):
     class Meta:

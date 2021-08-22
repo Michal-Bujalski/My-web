@@ -8,14 +8,9 @@
       <div class="card-body">
         <h5 class="card-title">{{form}}</h5>
         <p class="card-text"> This is my Contact Email {{form.email}}.</p>
-        <a href="#" class="btn btn-primary">Contact details</a>
+        <a href="{% url 'webapp:contact-details' form.pk %}" class="btn btn-primary">Contact details</a>
       </div>
     </div>
   </div>
 {% endfor %}
-<ul>
-    {% for form in forms %}
-    <li>{{form}}</li>
-    {% endfor %}
-</ul>
 {% endblock content %}
