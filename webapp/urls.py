@@ -5,6 +5,6 @@ app_name = "webapp"
 
 urlpatterns = [
     path('', home, name='home'),
-    path('<pk>/', contact_details, name='contact-details'),
+    path('<int:pk>/', contact_details, name='contact-details'),
     path('contact/', contact, name='contact'),
 ]

@@ -10,7 +10,7 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField(max_length=254)
     reason = models.CharField(max_length=254)
-    # contact = models.BooleanField(default=False, blank=True, null=True)
+    my_response = models.BooleanField(default=False, verbose_name="Did I response")
     body = models.TextField(blank=True, null=True)
     
 

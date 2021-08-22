@@ -28,7 +28,7 @@ def contact(request):
                 body=body,
             )
             # Return redirect to home page prom django sortcuts 
-            return redirect("/home")
+            return render(request, "webapp/home.html")
     context = {
         "form": form
     }
