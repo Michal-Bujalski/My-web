@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h1>This is the details of {{ form.first_name }}{{ form.last_name }}</h1>
+        <p class="card-text"> Please contact me on this address: {{form.email}}.</p>
+        <p class="card-text"> My reason why contact is: {{form.reason}}.</p>
+        <p class="card-text"> Please read my note for you: <br> {{form.body}}.</p>
+        <a href={% url 'webapp:contact_delete' form.pk %} class="btn btn-primary">Delete</a>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
