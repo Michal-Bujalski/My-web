@@ -32,7 +32,7 @@ def contact(request):
     context = {
         "form": form
     }
-    return render(request, 'webapp/contact.html', context)
+    return render(request, "webapp/contact.html", context)
 
 # It is important to name our secend argument pk becouse django know it is primary key from Contact model.
 def contact_details(request, pk):
@@ -40,4 +40,9 @@ def contact_details(request, pk):
     context = {
         "form": form
     }
-    return render(request, 'webapp/contact-details.html', context)
+    return render(request, "webapp/contact_details.html", context)
+
+def contact_delete(request, pk):
+    contact = Contact.objects.get(id=pk)
+    contact.delete()
+    return redirect("/webapp/")
