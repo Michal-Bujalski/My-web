@@ -9,7 +9,6 @@ def home(request):
     }
     return render(request, "webapp/home.html", context)
 
-
 def contact(request):
     form = ContactModelForm()
     if request.method == "POST":
@@ -46,3 +45,6 @@ def contact_delete(request, pk):
     contact = Contact.objects.get(id=pk)
     contact.delete()
     return redirect("/webapp/")
+
+def resume(request):
+    return render(request, "webapp/resume.html", {})
