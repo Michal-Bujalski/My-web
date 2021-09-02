@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
+</br>
+<h1> Please make Contact with</h1>
+</br>
+
 {% for form in forms %}
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{form}}</h5>
-        <p class="card-text"> This is my Contact Email {{form.email}}.</p>
-        <a href="{% url 'webapp:contact_details' form.pk %}" class="btn btn-primary">Contact details</a>
+  {% if form.my_response == False %}
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{form}}</h5>
+            <p class="card-text"> This is my Contact Email {{form.email}}.</p>
+            <a href="{% url 'webapp:contact_details' form.pk %}" class="btn btn-primary">Contact details</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+  {% endif %}
 {% endfor %}
 {% endblock content %}

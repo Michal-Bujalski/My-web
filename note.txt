@@ -1,4 +1,6 @@
-env\Scripts\activate.bat   # Start env 
+
+  # Start env 
+env\Scripts\activate.bat 
 
 Do utrwalenia 
 
