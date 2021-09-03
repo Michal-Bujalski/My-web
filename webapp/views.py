@@ -3,11 +3,14 @@ from .models import Contact
 from .froms import ContactModelForm
 
 def home(request):
+    return render(request, "webapp/home.html", {})
+
+def contact_list(request):
     forms = Contact.objects.all()
     context = {
         "forms": forms
     }
-    return render(request, "webapp/home.html", context)
+    return render(request, "webapp/contact_list.html", context)
 
 def contact(request):
     form = ContactModelForm()
