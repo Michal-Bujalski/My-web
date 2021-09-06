@@ -13,9 +13,9 @@
         <p class="card-text"> Please read my note for you: <br> {{form.body}}.</p>
         <a href={% url 'webapp:contact_delete' form.pk %} class="btn btn-primary">Delete</a>
         {% if form.my_response == False %}
-          <a href={% url 'webapp:contact_delete' form.pk %} class="btn btn-warning">You must response to {{ form.first_name }} </a>
+          <a href={% url 'webapp:my_response' form.pk %} class="btn btn-warning">You must response to {{ form.first_name }} </a>
         {% else %}
-          <a href={% url 'webapp:contact_delete' form.pk %} class="btn btn-success">You Contact {{ form.first_name }} </a>
+          <a href={% url '#' form.pk %} class="btn btn-success">You Contact {{ form.first_name }} </a>
         {% endif %}
       </div>
     </div>

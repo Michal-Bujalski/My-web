@@ -51,3 +51,7 @@ def contact_delete(request, pk):
 
 def resume(request):
     return render(request, "webapp/resume.html", {})
+
+
+def my_response(request, pk):
+    return render(request, "webapp/my_response.html", {})
