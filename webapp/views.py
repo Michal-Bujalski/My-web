@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Contact
-from .froms import ContactModelForm
+from .models import Contact, Response
+from .froms import ContactModelForm, ResponseModelForm
 
 def home(request):
     return render(request, "webapp/home.html", {})
@@ -54,4 +54,33 @@ def resume(request):
 
 
 def my_response(request, pk):
-    return render(request, "webapp/my_response.html", {})
+    form = Contact.objects.get(id=pk)
+
+    if form.my_response:
+        body = Response.objects.all()
+        context = {
+            "form": form,
+            "body": body
+        }
+        return render(request, "webapp/my_response.html", context)
+    else:
+
+        form2 = ResponseModelForm()
+        context = {
+            "form2": form2
+        }
+        if request.method == "POST":
+            form2 = ResponseModelForm(request.POST)
+            if form2.is_valid():
+                Contact.objects.filter(pk=pk).update(my_response=True)
+
+                form2.contact = form
+                body = form2.cleaned_data["body"]
+                Response.objects.create(
+                    contact=form,
+                    body=body
+                )
+                return render(request, "webapp/home.html") 
+
+        return render(request, "webapp/response.html", context)
+        
