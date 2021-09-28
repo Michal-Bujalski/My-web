@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, SimpleTestCase
 from webapp.models import Contact
 
 # Create your tests here.
@@ -17,3 +17,5 @@ class ContactTestCase(TestCase):
     def test_contacts_email(self):
         rob = Contact.objects.get(first_name= "Rob")
         self.assertEqual(rob.first_name, "Rob")
+        self.assertEqual(rob.last_name, "Seek")
+        self.assertEqual(rob.email, "robseek@email.com")

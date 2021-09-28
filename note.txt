@@ -23,4 +23,10 @@ Contact details do dokonczenia
             #zrobione 
 
 
-Uruszom git isue do sprawdzenia     
+Uruchom git isue do sprawdzenia
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+Today i learn 28/09
+  If you want past app_name in reverse function "app_name:url_name"
