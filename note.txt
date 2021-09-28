@@ -30,3 +30,4 @@ Uruchom git isue do sprawdzenia
 ----------------------------------------------------------------------------------------------------------------------------
 Today i learn 28/09
   If you want past app_name in reverse function "app_name:url_name"
+  if you test views and you want see page is load you must do GET response from client that view
