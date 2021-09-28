@@ -2,19 +2,22 @@
 {% block content %}
 
 </br>
-<h1> Please make Contact with</h1>
+<div class="d-flex justify-content-center">
+  <h1> Please make Contact with</h1>
+</div>
 </br>
-
-{% for form in forms %}
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{form}}</h5>
-            <p class="card-text"> This is my Contact Email {{form.email}}.</p>
-            <a href="{% url 'webapp:contact_details' form.pk %}" class="btn btn-primary">Contact details</a>
+<div class="d-flex justify-content-center">
+  {% for form in forms %}
+        <div class="center-row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{form}}</h5>
+                <p class="card-text"> This is my Contact Email {{form.email}}.</p>
+                <a href="{% url 'webapp:contact_details' form.pk %}" class="btn btn-primary">Contact details</a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-{% endfor %}
+  {% endfor %}
+</div>
 {% endblock content %}
