@@ -30,7 +30,7 @@ def contact(request):
                 body=body,
             )
             # Return redirect to home page prom django sortcuts 
-            return render(request, "webapp/home.html")
+            return redirect("webapp:contact_list")
     context = {
         "form": form
     }
@@ -47,7 +47,7 @@ def contact_details(request, pk):
 def contact_delete(request, pk):
     contact = Contact.objects.get(id=pk)
     contact.delete()
-    return redirect("/webapp/")
+    return redirect("webapp:contact_list")
 
 def resume(request):
     return render(request, "webapp/resume.html", {})
@@ -80,7 +80,7 @@ def my_response(request, pk):
                     contact=form,
                     body=body
                 )
-                return render(request, "webapp/home.html") 
+                return redirect("webapp:contact_list")
 
         return render(request, "webapp/response.html", context)
         
