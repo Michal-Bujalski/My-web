@@ -28,6 +28,10 @@ Uruchom git isue do sprawdzenia
 
 
 ----------------------------------------------------------------------------------------------------------------------------
-Today i learn 28/09
+Today i learn 
+  28/09
   If you want past app_name in reverse function "app_name:url_name"
-  if you test views and you want see page is load you must do GET response from client that view
+  if you test views and you want see that the page is loading you must do GET response from client that view
+
+  29/09
+  When you test POST request first submit then you must use Modelname. Objects. Get (id=) and check if is equals with POST.

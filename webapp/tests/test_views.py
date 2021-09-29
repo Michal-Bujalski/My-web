@@ -9,14 +9,7 @@ class TestViews(TestCase):
         self.contact_list_url = reverse("webapp:contact_list")
         self.contact_url = reverse("webapp:contact")
         
-        self.contact1 = Contact.objects.create(
-            first_name= "",
-            last_name= "",
-            email= "robseek@email.com",
-            reason= "Work",
-            my_response= True,
-            body= "some text",
-        )
+
 
     def test_contact_list_GET(self):
         response = self.client.get(self.contact_list_url)
@@ -31,7 +24,8 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "webapp/contact.html")
 
     def test_contact_POST_add_contact(self):
-        response = self.client.post(self.contact_url, {
+        url = reverse("webapp:contact")
+        response = self.client.post(url, {
             "first_name": "Rob",
             "last_name": "Seek",
             "email": "robseek@email.com",
@@ -39,6 +33,6 @@ class TestViews(TestCase):
             "my_response": True,
             "body": "some text"
             })
-
-        self.assertEquals(response.status_code, 200)
-        self.assertEquals(self.contact1.first_name, "Rob")
+        
+        contact1 = Contact.objects.get(id=1)
+        self.assertEquals(contact1.first_name, "Rob")
