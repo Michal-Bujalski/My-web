@@ -5,9 +5,21 @@ from webapp.models import Contact, Response
 class TestViews(TestCase):
 
     def setUp(self):
+        self.contact1 = Contact.objects.create(
+            first_name= "Max",
+            last_name= "See",
+            email= "maxsee@email.com",
+            reason= "Work",
+            my_response= True,
+            body= "some text",
+        )
         self.client = Client()
         self.contact_list_url = reverse("webapp:contact_list")
+        self.contact_details_url = reverse("webapp:contact_details", args=[1])
+        self.contact_delete_url = reverse("webapp:contact_delete", args=[1])
         self.contact_url = reverse("webapp:contact")
+        self.home_url = reverse("webapp:home")
+        self.resume_url = reverse("webapp:resume")
         
 
 
@@ -16,7 +28,31 @@ class TestViews(TestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, "webapp/contact_list.html")
+ 
+    def test_contact_details_GET(self):
+        response = self.client.get(self.contact_details_url)
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, "webapp/contact_details.html")
+
+    # def test_contact_delete(self):
+    #     response = self.client.get(self.contact_delete_url)
+
+    #     self.assertEquals(response.status_code, 302)
+    #     self.assertTemplateUsed(response, "webapp/contact_details.html")
+
+    def test_home_GET(self):
+        response = self.client.get(self.home_url)
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, "webapp/home.html")
   
+    def test_resume_GET(self):
+        response = self.client.get(self.resume_url)
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, "webapp/resume.html")
+ 
     def test_contact_GET(self):
         response = self.client.get(self.contact_url)
 
@@ -34,5 +70,5 @@ class TestViews(TestCase):
             "body": "some text"
             })
         
-        contact1 = Contact.objects.get(id=1)
-        self.assertEquals(contact1.first_name, "Rob")
+        contact2 = Contact.objects.get(id=2)
+        self.assertEquals(contact2.first_name, "Rob")
