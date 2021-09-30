@@ -1,6 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from webapp.models import Contact, Response
+import json
 
 class TestViews(TestCase):
 
@@ -10,8 +11,6 @@ class TestViews(TestCase):
             last_name= "See",
             email= "maxsee@email.com",
             reason= "Work",
-            my_response= True,
-            body= "some text",
         )
         self.client = Client()
         self.contact_list_url = reverse("webapp:contact_list")
@@ -20,6 +19,7 @@ class TestViews(TestCase):
         self.contact_url = reverse("webapp:contact")
         self.home_url = reverse("webapp:home")
         self.resume_url = reverse("webapp:resume")
+        self.my_response_url = reverse("webapp:response", args=[1])
         
 
 
@@ -34,12 +34,11 @@ class TestViews(TestCase):
 
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, "webapp/contact_details.html")
+#Need work on delete.
+    def test_contact_delete(self):
+        response = self.client.delete(self.contact_delete_url)
 
-    # def test_contact_delete(self):
-    #     response = self.client.get(self.contact_delete_url)
-
-    #     self.assertEquals(response.status_code, 302)
-    #     self.assertTemplateUsed(response, "webapp/contact_details.html")
+        self.assertEquals(response.status_code, 302)
 
     def test_home_GET(self):
         response = self.client.get(self.home_url)
@@ -60,15 +59,26 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "webapp/contact.html")
 
     def test_contact_POST_add_contact(self):
-        url = reverse("webapp:contact")
-        response = self.client.post(url, {
+        response = self.client.post(self.contact_url, {
             "first_name": "Rob",
             "last_name": "Seek",
             "email": "robseek@email.com",
             "reason": "Work",
-            "my_response": True,
-            "body": "some text"
             })
         
         contact2 = Contact.objects.get(id=2)
         self.assertEquals(contact2.first_name, "Rob")
+
+    def test_my_response_GET(self):
+        response = self.client.get(self.my_response_url)
+
+        self.assertEquals(response.status_code, 200)
+
+    def test_my_response_POST(self):
+
+        response1 = self.client.post(self.my_response_url,{
+            "body": "sss",
+        })
+        self.contact1.my_response = True
+        self.assertEquals(response1.status_code, 302)
+        self.assertEquals(self.contact1.my_response, True)
