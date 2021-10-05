@@ -1,6 +1,10 @@
 
   # Start env 
 env\Scripts\activate.bat 
+  # Run coverage test
+coverage run --omit='*/env/*' manage.py test webapp
+  # To see how is coverage
+coverage html
 
 Do utrwalenia 
 
