@@ -11,18 +11,19 @@ class ContactModelForm(forms.ModelForm):
             "email",
             "reason",
             "body",
-    
+
         )
         widgets = {
             "first_name": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'first_name'}),
             "last_name": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'last_name'}),
             "email": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'email'}),
             "reason": forms.TextInput(attrs={'class': "form-control", 'placeholder': 'reason'}),
-            "body": forms.Textarea(attrs={'class': "form-control", 'placeholder': 'body', 'style': "height: 400px"}),  
+            "body": forms.Textarea(attrs={'class': "form-control", 'placeholder': 'body', 'style': "height: 400px"}),
         }
 
+
 class ResponseModelForm(forms.ModelForm):
-    
+
     class Meta:
         model = Response
 

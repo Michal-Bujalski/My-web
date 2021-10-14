@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os 
+import os
 from pathlib import Path
 import environ
 
@@ -140,7 +140,7 @@ STATICFILES_DIRS = [
 ]
 
 
-# Sending email with gmail 
+# Sending email with gmail
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
